@@ -1,0 +1,61 @@
+<div class="container-fluid ">
+
+  <div class="row">
+    <div class="bg-dark text-warning p-2">
+      <span class="navbar-brand ml-2">
+        SPORTS STORE
+        <cart-summary />
+      </span>
+    </div>
+  </div>
+
+  <div class="row text-dark">
+    <!--
+      LEFT-CONTAINER
+      Controls and navigations
+    -->
+    <div class="col-3 p-2">
+      <button class="btn btn-outline-dark w-100 mt-1 mb-1 p-1" (click)="changeCategory()">HOME</button>
+      <button class="btn btn-outline-dark w-100 mt-1 mb-1" [class.active]="category == selectedCategory"
+        *ngFor="let category of categories;" (click)="changeCategory(category)">
+        {{category.toUpperCase()}}
+      </button>
+    </div>
+    <!--LEFT-CONTAINER -->
+
+    <!--
+      MAIN-CONTAINER
+      Main container, show products
+    -->
+    <div class="col-9 p-2">
+      <!-- {{products.length}} Products -->
+      <div *ngFor="let product of products;" class="card m-1 p-1 bg-light">
+        <h4>
+          {{product.name}}
+          <span class="badge text-dark rounded-pill bg-warning" style="float:right">
+            {{ product.price | currency:"USD":"symbol":"2.2-2" }}
+          </span>
+        </h4>
+        <div class="card-text bg-white p-1">
+          {{product.description}}
+          <button class="btn btn-primary btn-sm float-end" (click)="addProductToCart(product)">
+            Add To Cart
+          </button>
+        </div>
+      </div>
+
+      <div class="btn-group float-end p-2">
+        <!-- <button *ngFor="let singlePage of pageNumbers" class="btn btn-outline-dark"
+          [class.active]="singlePage == selectedPage" (click)="changePage(singlePage)">
+          {{singlePage}}
+        </button> -->
+        <button *counter="let page of pageCount" class="btn btn-outline-dark" (click)="changePage(page)"
+          [class.active]="page == selectedPage">
+          {{page}}
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>
