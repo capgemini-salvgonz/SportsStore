@@ -17,9 +17,11 @@ import { RestDataSource } from "../services/rest.datasource.service";
   providers: [
     ProductRepository,
     {provide: StaticDataSource, useClass: RestDataSource},
+    StaticDataSource,
+    RestDataSource,
     Cart,
     Order,
     OrderRepository,
-  ]
+  ],
 })
 export class ModelModule { }

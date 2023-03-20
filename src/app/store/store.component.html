@@ -14,11 +14,14 @@
       LEFT-CONTAINER
       Controls and navigations
     -->
-    <div class="col-3 p-2">
-      <button class="btn btn-outline-dark w-100 mt-1 mb-1 p-1" (click)="changeCategory()">HOME</button>
-      <button class="btn btn-outline-dark w-100 mt-1 mb-1" [class.active]="category == selectedCategory"
+    <div class="col-3 p-3">
+      <button class="btn btn-outline-dark w-100 mt-1 mb-1 p-2" (click)="changeCategory()">HOME</button>
+      <button class="btn btn-outline-dark w-100 mt-1 mb-1 p-2" [class.active]="category == selectedCategory"
         *ngFor="let category of categories;" (click)="changeCategory(category)">
         {{category.toUpperCase()}}
+      </button>
+      <button class="btn btn-danger mt-5 w-100" routerLink="/admin">
+        Admin
       </button>
     </div>
     <!--LEFT-CONTAINER -->
@@ -27,7 +30,7 @@
       MAIN-CONTAINER
       Main container, show products
     -->
-    <div class="col-9 p-2">
+    <div class="col p-2">
       <!-- {{products.length}} Products -->
       <div *ngFor="let product of products;" class="card m-1 p-1 bg-light">
         <h4>
